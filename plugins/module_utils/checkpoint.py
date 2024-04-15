@@ -193,8 +193,13 @@ def chkp_facts_api_call(module, api_call_object, is_multible):
             if "address" in module_key_params and "mask_length" in module_key_params:
                 show_single = True
         else:
-            if len(module_key_params) > 0:
+            if api_call_object == "alias-interface":
+              if  "name" in module_key_params.keys():
+                  show_single = True
+            elif len(module_key_params) > 0:
                 show_single = True
+            else:
+                show_single = False
 
         if show_single is True:
             code, res = api_call(module, target_version, api_call_object="show-{0}".format(api_call_object))
