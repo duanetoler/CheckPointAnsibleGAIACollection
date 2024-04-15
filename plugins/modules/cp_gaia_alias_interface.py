@@ -56,10 +56,11 @@ options:
 """
 
 EXAMPLES = """
-- name: Set comment field of a alias interface
+- name: Add an alias interface
   check_point.gaia.cp_gaia_alias_interface:
-    comments: "eth0:1 interface"
-    name: eth0:1
+    name: eth1:1
+    ipv4_address: 192.0.2.2
+    ipv4_mask_length: 29
 
 """
 
@@ -88,9 +89,9 @@ def main():
     ignore = ['parent']
     show_params = ['name']
     add_params = {}
-    parent_and_id = module.params["name"].split(":")
+    parent_and_id = module.params['name'].split(':')
     if len(parent_and_id) == 2:
-        add_params = {"parent": parent_and_id[0] }
+        add_params = { 'parent': parent_and_id[0] }
 
     res = chkp_api_call(module, api_call_object, True, ignore=ignore, show_params=show_params, add_params=add_params)
     module.exit_json(**res)
