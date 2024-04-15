@@ -39,10 +39,6 @@ options:
     description: Interface name to show. If not specified, all alias interfaces information is returned.
     required: false
     type: str
-  parent:
-    description: Parent interface name to show. If not specified, all alias interfaces information is returned.
-    required: false
-    type: str
 
 """
 
@@ -53,10 +49,6 @@ EXAMPLES = """
 - name: Show alias interface by specifying it's name
   check_point.gaia.cp_gaia_alias_interface_facts:
     name: eth0:1
-
-- name: Show alias interface by specifying it's parent interface
-  check_point.gaia.cp_gaia_alias_interface_facts:
-    parent: eth0
 
 """
 
@@ -99,8 +91,7 @@ from ansible_collections.check_point.gaia.plugins.module_utils.checkpoint import
 def main():
     # arguments for the module:
     fields = dict(
-        name=dict(required=False, type='str'),
-        parent=dict(required=False, type='str')
+        name=dict(required=False, type='str')
     )
     fields.update(checkpoint_argument_spec_for_all)
     module = AnsibleModule(argument_spec=fields, supports_check_mode=True)
