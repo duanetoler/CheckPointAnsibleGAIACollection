@@ -102,7 +102,6 @@ def main():
     fields = dict(
         state=dict(type='str', default='present', choices=['present', 'absent']),
         name=dict(type='str'),
-        enabled=dict(type='bool'),
         comments=dict(type='str'),
         ipv4_address=dict(type='str'),
         ipv4_mask_length=dict(type='int'),
