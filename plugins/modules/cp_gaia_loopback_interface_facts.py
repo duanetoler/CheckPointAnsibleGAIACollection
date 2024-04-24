@@ -94,10 +94,6 @@ ansible_facts:
                     description: Interface Comments.
                     returned: always
                     type: str
-                enabled:
-                    description: Interface State.
-                    returned: always
-                    type: bool
                 mtu:
                     description: Interface mtu.
                     returned: always
